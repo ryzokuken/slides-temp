@@ -1,4 +1,9 @@
 {
   "theme": "assets/theme/igalia.css",
-  "template": "assets/template.html"
+  "template": "assets/template.html",
+  "scripts": [
+    "node_modules/reveal.js-plugins/chart/Chart.min.js",
+    "node_modules/reveal.js-plugins/chart/plugin.js",
+    "assets/plugins.js"
+  ]
 }

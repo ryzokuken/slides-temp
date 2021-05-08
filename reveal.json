@@ -2,5 +2,61 @@
   "hash": true,
   "slideNumber": "c/t",
   "height": 800,
-  "minScale": 0.7
+  "minScale": 0.7,
+  "chart": {
+    "defaults": {
+      "global": {
+        "title": {
+          "fontColor": "#000"
+        },
+        "legend": {
+          "position": "bottom",
+          "labels": {
+            "fontColor": "#000"
+          }
+        },
+        "tooltips": {
+          "labels": {
+            "fontColor": "#000"
+          }
+        }
+      },
+      "scale": {
+        "scaleLabel": {
+          "fontColor": "#000"
+        },
+        "ticks": {
+          "fontColor": "#000",
+          "beginAtZero": true
+        }
+      }
+    },
+    "pie": {
+      "backgroundColor": [
+        [
+          "#0067B1",
+          "#FF9900",
+          "#670164",
+          "#A1C22D"
+        ]
+      ],
+      "fontSize": 40
+    },
+    "bar": {
+      "backgroundColor": [
+        "#0067B1",
+        "#FF9900",
+        "#670164",
+        "#A1C22D"
+      ]
+    },
+    "line": {
+      "backgroundColor": [
+        "#0067B1",
+        "#FF9900",
+        "#670164",
+        "#A1C22D"
+      ]
+    }
+  }
 }

@@ -12,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "reveal-md": "^5.0.0"
+  },
+  "dependencies": {
+    "reveal.js-plugins": "^4.1.2"
   }
 }
