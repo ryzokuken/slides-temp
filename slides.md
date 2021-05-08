@@ -1,5 +1,7 @@
 ---
 title: Sample Igalia Presentation
+footerFirst: Markdown Presentation Example
+footerSecond: Eric Meyer, Igalia, March 2021
 ---
 # Markdown Presentation Example
 ##### Eric Meyer
