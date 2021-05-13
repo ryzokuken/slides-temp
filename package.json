@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "igalia-slides": "bin.js"
+  },
   "scripts": {
     "dev": "reveal-md slides.md --watch",
     "build": "reveal-md slides.md --static"
