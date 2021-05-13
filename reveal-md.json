@@ -1,5 +1,6 @@
 {
   "theme": "assets/theme/igalia.css",
+  "highlightTheme": "github-gist",
   "template": "assets/template.html",
   "scripts": [
     "node_modules/reveal.js-plugins/chart/Chart.min.js",
