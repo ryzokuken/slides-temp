@@ -262,7 +262,7 @@ These are 1x-resolution images, which are relative easy to include using Markdow
 
 ---
 <!-- .slide: data-middle-cover -->
-![Igalia](dist/theme/images/igalia-logo-small.png)
+![Igalia](assets/theme/images/igalia-logo-small.png)
 
 ---
 <!-- .slide: data-section-cover -->
