@@ -1,331 +1,266 @@
 ---
-title: Sample Igalia Presentation
-footerFirst: Markdown Presentation Example
-footerSecond: Eric Meyer, Igalia, March 2021
+title: How to outsmart time
+footerFirst: How to outsmart time
+footerSecond: Ujjwal Sharma (@ryzokuken), JSNation 2021
 ---
-# Markdown Presentation Example
-##### Eric Meyer
-###### Igalia, March 2021
+<!-- .slide: data-cover -->
 
----
+# How to outsmart time 🧠🕒 <!-- .element: class="r-fit-text" -->
+## Building futuristic JavaScript applications using Temporal <!-- .element: class="r-fit-text" -->
+Ujjwal Sharma (@ryzokuken)
 
-# Titular h1
-## Titular h2
-### Titular h3
-#### Titular h4
-##### Titular h5
-###### Titular h6
-
----
-
-This? Fit text! <!-- .element: class="r-fit-text" -->
-
-This is also fit text, which means its size is scaled to fit available space
-<!-- .element: class="r-fit-text" -->
-
-There is a limit to how small the text can get when being fit; this causes the text to wrap to a second line, which is the same font size as the first line
-<!-- .element: class="r-fit-text" -->
-
-This is _not_ fit text. Compare its size to the previous elements.
-
----
+----
 <!-- .slide: class="igalia-align-left" -->
-## Titular h2
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces or one tab:
-	* Ac tristique libero volutpat at
-	* Facilisis in pretium nisl aliquet
-+ Nulla volutpat aliquam velit
-- Marker character changes do _not_ force new list start
-+ Very easy!
 
----
+# About me 👦
 
-### Titular h3
-> This is a blockquote, which is styled to set it apart from normal text but should really only be used when quoting someone at length.  This is a Markdown example, where it is difficult to have a citation.
+* Compilers Hacker at Igalia
+	* Free Software Consultancy in Galicia 🇪🇸
+	* Browsers, Compilers, Standards, Linux, ...
+* TC39 Delegate
+* ECMA-402 Editor
+* Temporal Champion
+* Node.js Core Collaborator
 
----
-
-<h3>Titular h3</h3>
-<blockquote>
-	<p>This is a blockquote, which is styled to set it apart from normal text but should really only be used when quoting someone at length.  This is an HTML example, which can fairly easily have a citation.</p>
-	<cite><strong>Author of quote</strong>, cited source</cite>
-</blockquote>
-
----
-
-#### Titular h4
-**This is boldface/strong emphasis**
-
-*This is emphasis/italics*
-
-~~This is struck-out text~~
-
----
-
-<img style="max-width: 70%;" src="public/graph-1.svg" alt="Gráfico">
-
-This is an SVG image of a chart, which must be pre-made and embedded or included.<!-- .element: class="igalia-text-small" -->
-
----
-
-<canvas data-chart="line">
-	<!--
-	{
-	"data": {
-		"labels": ["January"," February"," March"," April"," May"," June"," July"],
-		"datasets": [
-		{
-			"data":[65,59,80,81,56,55,40],
-			"label":"Igalia.com Views","backgroundColor":"rgba(0,103,177,0.8)"
-		},
-		{
-			"data":[28,48,40,19,86,27,90],
-			"label":"Revenue","backgroundColor":"rgb(255,153,0,0.8)"
-		}
-		]
-	},
-	"options": { "responsive": "true" }
-	}
-	-->
-</canvas>
-
-<p class="igalia-text-small">This is a chart which is dynamically built and animated from source data embedded into the slide.  In this example, the data is in a JSON format.</p>
-
----
-
-<canvas data-chart="bar">
-<!--
-{
-"data" : {
-	"labels" : ["Enero", "Febrero", "Marzo", "Avril", "Mayo", "Junio", "Julio"],
-	"datasets" : [{
-			"data":[65,59,80,81,56,55,40],
-			"label":"Igalia.com Views","backgroundColor":"rgba(0,103,177,1)"
-		},
-		{
-			"data":[28,48,40,19,86,27,90],
-			"label":"Revenue","backgroundColor":"rgb(255,153,0,0.8)"
-		}]
-	}
-}
--->
-</canvas>
-
-<p class="igalia-text-small">This is another chart which is dynamically built and animated from source data embedded into the slide.  In this example, the data is once again in a JSON format.</p>
-
----
-
-<canvas data-chart="pie">
-,Black, Red, Green, Yellow
-My first dataset, 40, 40, 20, 6
-</canvas>
-<p class="igalia-text-small">This pie chart is dynamically built and animated from CSV data embedded directly into the Markdown.</p>
-
----
-
-<canvas data-chart="bar">
-,2018, 2019, 2020, 2021
-Size, 10, 32, 25, 40
-</canvas>
-<p class="igalia-text-small">This bar chart is dynamically built and animated from CSV data embedded directly into the Markdown.</p>
-
----
-
-<canvas data-chart="line">
-,2018, 2019, 2020, 2021
-Project B, 10, 32, 25, 40
-Project B, 14, 30, 32, 33
-</canvas>
-<p class="igalia-text-small">This line chart is dynamically built and animated from CSV data embedded directly into the Markdown.</p>
-
----
-
-<canvas data-chart="pie" data-chart-src="data/chart-example.csv">>
-</canvas>
-<p class="igalia-text-small">This pie chart is dynamically built and animated from CSV data found in an external CSV file.</p>
-
-
----
-
-#### Titular h4, Tablas:
-| Option | Description |
-| ------ | ----------- |
-| data | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext | extension to be used for dest files. |
-
----
-
-### Ordered list
-
-1. Ordered lists default to left-aligned, which seems sensible
-2. If you want the text centered, you might have to hack it
-3. Possibilities still to be determined
-4. Ordered list markers are 1.2x bigger than the text content in the list item
-
----
-
-### Unordered list
-
-* Unordered lists default to centering, which is a bit weird
-* Consider adding the left-align style to such lists
-* Unless this is the effect you’re after
-* Unordered list markers are _not_ 1.2x bigger than the text content in the list item
-
----
-<!-- .slide: class="igalia-text-small" -->
-#### TITULAR H4
-
-![This is alt text](public/bitmap@2x.jpg)
-
-Here’s an example of an image embedded into the slide, demonstrating how Markdown handles such things.
-
----
-<!-- .slide: class="igalia-align-left igalia-text-small" -->
-### Two-column text
-<div class="igalia-columns">
-	<p>This is a paragraph which is enclosed in a <code>div</code> that has a <code>class</code> of <code>igalia-columns</code>, which causes the contents of that <code>div</code> to be rendered using two columns.  At this time, the only built-in option is two columns; to get more than two columns, you need to hack in some CSS.</p>
-	<p>It’s possible to have multiple elements inside the two columns.  The contents will be split between the two columns, and browsers will generally try to balance the contents of the columns, though they often bias to the first column.</p>
-	<p>It is difficult to flow lists (whether ordered or unordered) into two columns when using Markdown, due to the way the Markdown parser works.  Two-column lists are easy with straight HTML markup: just add the appropriate <code>class</code> value.</p>
-</div>
-
----
-<!-- .slide: class="igalia-align-left" -->
-# Q&A
-
-<ul class="igalia-qa">
-	<li>How are Q&A content handled?</li>
-	<li>It’s an unordered list with a <code>class</code> of <code>igalia-qa</code>.</li>
-	<li>Can it be done with Markdown instead of HTML?</li>
-	<li>So far, not really.  Certainly not easily.</li>
-	<li>Shouldn’t this be a definition list instead of an unordered list?</li>
-	<li>Let’s not go down that particular rabbit hole of madness right now.</li>
-</ul>
-
----
+----
 <!-- .slide: class="igalia-align-left igalia-text-medium" -->
-## *Thanks*
 
-*That was a italicized titular H2.  This is an italicized paragraph.  Both are using the single-asterisk pattern.  You can also use underscores to italicize text, if you’re all about that IRC style.*
+# Recap 🔙
 
----
+* `Date` severely outdated, has serious issues.
+* Popular third party libraries for date/time handling.
+* Quite a few problems exist, need to do something.
+* Temporal: state-of-the-art date/time handling in JS.
+* Ergonomic API with special focus on common use-cases.
+* Powerful feature set accommodating complex use-cases.
+	* Local Calendar Support
+	* Custom Time Zones and Calendars
 
-<p class="igalia-message-info">This is what an information message looks like.</p>
-<p class="igalia-message-ok">This is what an “OK” or positive message looks like.</p>
-<p class="igalia-message-ko">This is what a “KO” or negative/warning message looks like.</p>
+----
 
----
-
-### Syntax highlighting
-Note how the type of code is labeled in the Markdown file.<!-- .element: class="igalia-text-small" -->
-
-``` js
-var foo = function (bar) {
-	return bar++;
-};
-// JS comments like so
-console.log(foo(5));
-```
-``` css
-h1 {visibility: visible;}
-/* CSS comments like so */
-::marker {font-size: xx-large;}
-```
-
----
-<!-- .slide: class="igalia-text-small" -->
-#### Logos Normal
-
-![Logo Alt](public/logo.png)
-![Logo Alt](public/logo2.png)
-![Logo Alt](public/logo3.png)
-![Logo Alt](public/logo4.png)
-![Logo Alt](public/logo5.png)
-![Logo Alt](public/logo6.png)
-
-These are 1x-resolution images, which are relative easy to include using Markdown.
-
----
-<!-- .slide: class="igalia-text-small" -->
-<h4>Logos Retina</h4>
-
-<img alt="Logo Alt" width="95" src="public/logo@2x.png">
-<img alt="Logo Alt" width="269" src="public/logo2@2x.png">
-<img alt="Logo Alt" width="200" src="public/logo3@2x.png">
-<img alt="Logo Alt" width="166" src="public/logo4@2x.png">
-<img alt="Logo Alt" width="64" src="public/logo5@2x.png">
-<img alt="Logo Alt" width="256" src="public/logo6@2x.png">
-<img alt="Logo Alt" width="64" src="public/logo7@2x.png">
-
-<p>These are 2x-resolution (or “Retina”) images, which need some sizing in order to not be huge and so are difficult to add using Markdown.  Straight HTML is easier.</p>
-
----
-<!-- .slide: data-middle-cover -->
-![Igalia](assets/theme/images/igalia-logo-small.png)
+<iframe width="800" height="450" src="https://www.youtube.com/embed/3F2A708c1o0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 <!-- .slide: data-section-cover -->
-# Portada sección
+
+Temporal is now Stage 3! 🎉 <!-- .element: class="r-fit-text" -->
+
+----
+<!-- .slide: class="igalia-align-left" -->
+
+# What does that mean? 🤔 <!-- .element: class="r-fit-text" -->
+
+* All the tiny details have been discussed.
+* The specification text has been approved.
+* The committee is satisfied with the design.
+* Time to start implementing and using Temporal.
+* Polyfill implementations.
+* Browser implementations.
+
+----
+<!-- .slide: data-visibility="hidden" -->
+
+TC39 Stage Process
+
+----
+<!-- .slide: data-visibility="hidden" -->
+
+What changed?
+
+----
+
+<img src="public/object-model.svg"/>
+
+----
+<!-- .slide: class="igalia-align-left igalia-text-medium" -->
+
+# Summary
+
+* `Instant` represents an absolute time.
+* `Plain*` types deal with regular wall-clock time and calendar date.
+* `Calendar`s refer to a human calendar.
+* `TimeZone`s refer to an offset or a human time zone.
+* `ZonedDateTime` is the combination of an Instant and a `TimeZone`.
+* All arithmetic operations are done using `Duration`s.
+
+----
+<!-- .slide: class="igalia-align-left" data-visibility="hidden" -->
+
+# Summary
+
+* `Instant` and `Plain*` types work as previously talked about.
+* `ZonedDateTime` is the combination of an Instant and a `TimeZone`.
+* All arithmetic operations are done using `Duration`s.
+* `TimeZone`s are used in ZDT primarily, direct conversion removed.
+* `Calendar`s are used for `Date` and friends.
+* Use month codes instead of indexes.
+* All other features could be added in a v2 proposal.
 
 ---
-<!-- .slide: data-section-cover-2 -->
+<!-- .slide: data-section-cover -->
 
-# Portada sección
+# Let’s make an invoice calculator! 🖩
+
+----
+<!-- .slide: class="igalia-align-left" -->
+
+# Step 1: Pick a date-time picker 📆 <!-- .element: class="r-fit-text" -->
+
+* Pick a date-time picker component that fits rendering strategy.
+* Should return an ISO-8601 string.
+	* Should return a Temporal type?
+* There are already many you can pick from!
+	* `react-picker` (React)
+	* `datetimepicker` (jQuery)
+
+----
+
+`Temporal.PlainDateTime.from(myString)` <!-- .element: class="r-fit-text" -->
+
+----
+<!-- .slide: class="igalia-align-left" -->
+
+# Step 3: Two date-times? Find the difference! <!-- .element: class="r-fit-text" -->
+
+* When you have a start point and an end point, you can find the difference.
+* Durations can be both positive and negative, direction is important!
+	* Note when adding durations especially.
+	* Also especially when dealing with money!
+* You can check the sign with `duration.sign`.
+* You can find the absolute value by `duration.abs()`.
+
+----
+
+```javascript [1-2|4-6|8-10]
+const earlier = Temporal.PlainDateTime.from('2020-01-09T00:00');
+const later = Temporal.PlainDateTime.from('2020-01-09T04:00');
+
+const result = later.since(earlier, {
+  largestUnit: 'hours'
+}); // 'PT4H'
+
+const result2 = earlier.until(later, {
+  largestUnit: 'minutes'
+}); // 'PT240M'
+```
+
+----
+<!-- .slide: class="igalia-align-left igalia-text-medium" -->
+
+# Step 4: Find out how much you worked! <!-- .element: class="r-fit-text" -->
+
+* Once you have an array of durations, you can add all of them together.
+* <pre><code data-trim style="padding: 0" class="javascript">
+durations.reduce(
+    (total, current) => total.add(current),
+    new Temporal.Duration()
+);
+</code></pre>
+* <pre><code data-trim style="padding: 0" class="javascript">
+const total = Temporal.Duration.from(‘PT0S’);
+durations.forEach(duration => total.add(duration));
+</code></pre>
+* Remember to call `abs()` if you need to!
+
+----
+<!-- .slide: class="igalia-align-left" -->
+
+# Duration Serialization Format 📜 <!-- .element: class="r-fit-text" -->
+
+* <pre><code data-trim style="padding: 0" class="javascript">
+Temporal.Duration.from({
+    years: 1, months: 2, weeks: 3, days: 4,
+    hours: 5, minutes: 6, seconds: 7})
+.toString(); // 'P1Y2M3W4DT5H6M7S'
+</code></pre>
+* Can use fractions! (careful)
+
+----
+<!-- .slide: class="igalia-align-left" -->
+
+# Step 5a: 💸 by the hour <!-- .element: class="r-fit-text" -->
+
+* Depending on the contract, you might want to charge per day or per hour.
+* The math is easy! In fact, it’s built into Temporal.
+* For bringing things to a single unit, just use `total(...)`.
+
+----
+
+```javascript
+// How many 24-hour days is 1,000,000 seconds?
+d = Temporal.Duration.from(‘PT1000000S’);
+d.total({ unit: ‘hours’ }); // 277.77777777777777
+```
+
+----
+
+# Step 5b: Relativity is important! 🔎 <!-- .element: class="r-fit-text" -->
+
+----
+
+```javascript [2|3-6|7-10]
+// Find totals in months, w/o taking DST into account
+d = Temporal.Duration.from({ hours: 2756 });
+d.total({
+   relativeTo: '2020-01-01T00:00+01:00[Europe/Rome]',
+   unit: 'months'
+}); // => 3.7958333333333334
+d.total({
+  unit: 'months',
+  relativeTo: '2020-01-01'
+}); // => 3.7944444444444443
+```
+
+----
+<!-- .slide: class="igalia-align-left" -->
+
+# Step 5c: Rounding for the win! 🏆 <!-- .element: class="r-fit-text" -->
+
+* The final value can be rounded up or down, depending on the contract.
+* Sometimes you don’t charge by a “X”, but rather “n Xs”.
+* `round(...)` to the rescue!
+
+----
+
+```javascript
+d = Temporal.Duration.from({ minutes: 6 });
+d.round({
+  smallestUnit: 'minutes',
+  roundingIncrement: 5,
+  roundingMode: 'ceil' }); // => PT10M
+```
 
 ---
-<!-- .slide: data-background-image="public/bg.jpg" -->
+<!-- .slide: data-section-cover -->
+
+# Assignment Time 📋
+
+[![QR Code](public/sandbox.png)](https://codesandbox.io/embed/temporal-playhouse-55yg9)
+
+----
+<!-- .slide: class="igalia-align-left" -->
+
+# Links to the future (and present) 🔗 <!-- .element: class="r-fit-text" -->
+
+* [ Polyfill ](https://www.npmjs.com/package/proposal-temporal)
+* [ V8 tracking issue ](https://bugs.chromium.org/p/v8/issues/detail?id=11544)
+* [ SpiderMonkey tracking issue ](https://bugzilla.mozilla.org/show_bug.cgi?id=1519167)
+* [ JavaScriptCore tracking issue ](https://bugs.webkit.org/show_bug.cgi?id=223166)
+<!-- * [ core-js tracking issue ](https://github.com/zloirock/core-js/issues/365) -->
+* [ Temporal v2 ](https://github.com/js-temporal/proposal-temporal-v2)
 
 ---
+<!-- .slide: class="igalia-align-left" -->
 
-<section data-background-image="public/bg2.jpg">
-<div class="igalia-wrapper">
-	<h3>Thanks</h3>
-	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas repellat aut quos, tempore quasi voluptas</p>
-</div>
-</section>
+# Special Thanks 🙏
 
----
+* Temporal Champions
+* Moment.js Maintainers
+<!-- * Temporal Stage 3 Reviewers -->
+<!-- * ECMA 262 Editors -->
+* Organizers and PC
+* Olga Kobets
 
-<section data-background-image="public/bg2.jpg">
-<div class="igalia-wrapper igalia-wrapper--alt">
-  <p>Image description</p>
-</div>
-</section>
+----
 
----
-<!-- .slide: data-cover -->
-<img src="public/logo-eeff@2x.png" width="346" alt="Logo EEFF">
-
-#### Running HTML5-only User Interface on AGL Into the Web Based Homescreen and Applications
-##### Lorenzo Tilve
-###### Igalia
-</section>
-
----
-
-<h2>The Lorenz Equations</h2>
-\[\begin{aligned}
-\dot{x} &amp; = \sigma(y-x) \\
-\dot{y} &amp; = \rho x - y - xz \\
-\dot{z} &amp; = -\beta z + xy
-\end{aligned} \]
-
-
-That’s maths!  The syntax is a little crazy; only include mathematical content if you absolutely must.
-
----
-<!-- .slide: data-background-color="#000" -->
-### Video!
-<figure class="video_container">
-	<iframe src="https://www.youtube.com/embed/enMumwvLAug" width="800" height="450" frameborder="0" allowfullscreen="true">
-	</iframe>
-</figure>
-
----
-
-## The End
-
-Any questions?
-
-Ask emeyer@igalia.com for help!
+# Dank u! ❤🕒

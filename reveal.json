@@ -3,6 +3,9 @@
   "slideNumber": "c/t",
   "height": 800,
   "minScale": 0.7,
+  "markdown": {
+    "animateLists": true
+  },
   "chart": {
     "defaults": {
       "global": {

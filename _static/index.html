@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>How to outsmart time</title>
+    <link rel="shortcut icon" href="./favicon.ico"/>
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="_assets/assets/theme/igalia.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/github.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section ><section data-markdown><script type="text/template">
+<!-- .slide: data-cover -->
+
+# How to outsmart time 🧠🕒 <!-- .element: class="r-fit-text" -->
+## Building futuristic JavaScript applications using Temporal <!-- .element: class="r-fit-text" -->
+Ujjwal Sharma (@ryzokuken)
+</script></section><section data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+## About me 👦
+
+* Compilers Hacker at Igalia <!-- .element: class="fragment" -->
+	* Free Software Consultancy in Galicia 🇪🇸 <!-- .element: class="fragment" -->
+	* Browsers, Compilers, Standards, Linux, ... <!-- .element: class="fragment" -->
+* TC39 Delegate <!-- .element: class="fragment" -->
+* Temporal Champion <!-- .element: class="fragment" -->
+* Node.js Core Collaborator <!-- .element: class="fragment" -->
+</script></section><section data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+### Recap 🔙
+
+* Date severely outdated, has serious issues. <!-- .element: class="fragment igalia-text-medium" -->
+* Popular third party libraries for date/time handling. <!-- .element: class="fragment igalia-text-medium" -->
+* Quite a few problems exist, need to do something. <!-- .element: class="fragment igalia-text-medium" -->
+* Temporal: state-of-the-art date/time handling in JS. <!-- .element: class="fragment igalia-text-medium" -->
+* Ergonomic API with special focus on common use-cases. <!-- .element: class="fragment igalia-text-medium" -->
+* Powerful feature set accommodating complex use-cases. <!-- .element: class="fragment igalia-text-medium" -->
+	* Local Calendar Support <!-- .element: class="fragment igalia-text-medium" -->
+	* Custom Time Zones and Calendars <!-- .element: class="fragment igalia-text-medium" -->
+</script></section><section data-markdown><script type="text/template">
+<iframe width="800" height="450" src="https://www.youtube.com/embed/3F2A708c1o0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: data-section-cover -->
+
+Temporal is now Stage 3! 🎉 <!-- .element: class="r-fit-text" -->
+</script></section><section data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+## What does that mean? 🤔
+
+* All the tiny details have been discussed. <!-- .element: class="fragment" -->
+* The specification text has been approved. <!-- .element: class="fragment" -->
+* The committee is satisfied with the design. <!-- .element: class="fragment" -->
+* Time to start implementing and using Temporal. <!-- .element: class="fragment" -->
+* Polyfill implementations. <!-- .element: class="fragment" -->
+* Browser implementations. <!-- .element: class="fragment" -->
+</script></section><section data-markdown><script type="text/template"><!-- .slide: data-visibility="hidden" -->
+
+TC39 Stage Process
+</script></section><section data-markdown><script type="text/template"><!-- .slide: data-visibility="hidden" -->
+
+What changed?
+</script></section><section data-markdown><script type="text/template">
+<img src="public/object-model.svg"/>
+</script></section><section data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+### Summary
+
+<ul>
+	<li class="fragment igalia-text-medium"><code>Instant</code> and <code>Plain*</code> types work as previously talked about.</li>
+	<li class="fragment igalia-text-medium"><code>ZonedDateTime</code> is the combination of an <code>Instant</code> and a <code>TimeZone</code>.</li>
+	<li class="fragment igalia-text-medium">All arithmetic operations are done using <code>Duration</code>s.</li>
+	<li class="fragment igalia-text-medium"><code>TimeZones</code> are used in ZDT primarily, direct conversion removed.</li>
+	<li class="fragment igalia-text-medium"><code>Calendars</code> are used for <code>Date</code> and friends.</li>
+	<li class="fragment igalia-text-medium">Use month codes instead of indexes.</li>
+	<li class="fragment igalia-text-medium">All other features could be added in a v2 proposal.</li>
+</ul>
+</script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: data-section-cover -->
+
+# Let’s make an invoice calculator! 🖩
+</script></section><section data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+# Step 1: Pick a date-time picker 📆 <!-- .element: class="r-fit-text" -->
+
+<ul>
+	<li class="fragment">Pick a date-time picker component that fits rendering strategy.</li>
+	<li class="fragment">Should return an ISO-8601 string.</li>
+	<ul>
+		<li class="fragment">Should return a Temporal type?</li>
+	</ul>
+	<li class="fragment">There are already many you can pick from!</li>
+	<ul>
+		<li class="fragment"><code>react-datetime-picker</code> (React)</li>
+		<li class="fragment"><code>datetimepicker</code> (jQuery)</li>
+	</ul>
+</ul>
+</script></section><section data-markdown><script type="text/template">
+`Temporal.PlainDateTime.from(myString)`
+</script></section><section data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+# Step 3: Two date-times? Find the difference! <!-- .element: class="r-fit-text" -->
+
+* When you have a start point and and end point, you can find the difference.
+* Durations can be both positive and negative, direction is important!
+	* Note when adding durations especially.
+	* Also especially when dealing with money!
+* You can check the sign with `duration.sign`
+* You can find the absolute value by `duration.abs()`
+</script></section><section data-markdown><script type="text/template">
+```javascript [1-2|4-6|8-10]
+const earlier = Temporal.PlainDateTime.from('2020-01-09T00:00');
+const later = Temporal.PlainDateTime.from('2020-01-09T04:00');
+
+const result = later.since(earlier, {
+  largestUnit: 'hours'
+}); // 'PT4H'
+
+const result2 = earlier.until(later, {
+  largestUnit: 'minutes'
+}); // 'PT240M'
+```
+</script></section><section data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+# Step 4: Find out how much you worked! <!-- .element: class="r-fit-text" -->
+
+<ul>
+	<li class="fragment">Once you have an array of durations, you can add all of them together.</li>
+	<li class="fragment">
+		<pre><code data-trim style="margin: 0; padding: 0; line-height: 1.1" class="javascript">
+durations.reduce(
+	(total, current) => total.add(current),
+	new Temporal.Duration()
+);
+		</code></pre>
+	</li>
+	<li class="fragment">
+		<pre><code data-trim style="margin: 0; padding: 0; line-height: 1.1" class="javascript">
+const total = Temporal.Duration.from(‘PT0S’);
+durations.forEach(duration => total.add(duration));
+		</code></pre>
+	</li>
+	<li class="fragment">Remember to call <code>abs()</code> if you need to!</li>
+</ul>
+</script></section><section data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+# Duration Serialization Format 📜 <!-- .element: class="r-fit-text" -->
+
+<ul>
+	<li class="fragment">
+		<pre><code data-trim style="margin: 0; padding: 0; line-height: 1.1" class="javascript">
+Temporal.Duration.from({
+    years: 1, months: 2, weeks: 3, days: 4,
+    hours: 5, minutes: 6, seconds: 7})
+.toString(); // 'P1Y2M3W4DT5H6M7S'
+		</code></pre>
+	</li>
+	<li class="fragment">Can use fractions! (careful)</li>
+</ul>
+</script></section><section data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+# Step 5a: 💸 by the hour <!-- .element: class="r-fit-text" -->
+
+* Depending on the contract, you might want to charge per day or per hour.
+* The math is easy! In fact, it’s built into Temporal.
+* For bringing things to a single unit, just use `total(...)`.
+</script></section><section data-markdown><script type="text/template">
+```javascript
+// How many 24-hour days is 1,000,000 seconds?
+d = Temporal.Duration.from(‘PT1000000S’);
+d.total({ unit: ‘hours’ }); // 277.77777777777777
+```
+</script></section><section data-markdown><script type="text/template">
+# Step 5b: Relativity is important! 🔎 <!-- .element: class="r-fit-text" -->
+</script></section><section data-markdown><script type="text/template">
+```javascript [2|3-6|7-10]
+// Find totals in months, w/o taking DST into account
+d = Temporal.Duration.from({ hours: 2756 });
+d.total({
+   relativeTo: '2020-01-01T00:00+01:00[Europe/Rome]',
+   unit: 'months'
+}); // => 3.7958333333333334
+d.total({
+  unit: 'months',
+  relativeTo: '2020-01-01'
+}); // => 3.7944444444444443
+```
+</script></section><section data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+# Step 5c: Rounding for the win! 🏆 <!-- .element: class="r-fit-text" -->
+
+* The final value can be rounded up or down, depending on the contract.
+* Sometimes you don’t charge by a “X”, but rather “n Xs”.
+* round(...) to the rescue!
+</script></section><section data-markdown><script type="text/template">
+```javascript
+d = Temporal.Duration.from({ minutes: 6 });
+d.round({
+  smallestUnit: 'minutes',
+  roundingIncrement: 5,
+  roundingMode: 'ceil' }); // => PT10M
+```
+</script></section></section><section  data-markdown><script type="text/template"><!-- .slide: data-section-cover -->
+
+# Assignment Time 📋
+
+![QR Code](public/sandbox.png)
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+# Links to the future (and present) 🔗 <!-- .element: class="r-fit-text" -->
+
+* [ Polyfill ](https://www.npmjs.com/package/proposal-temporal)
+* [ V8 tracking issue ](https://bugs.chromium.org/p/v8/issues/detail?id=11544)
+* [ SpiderMonkey tracking issue ](https://bugzilla.mozilla.org/show_bug.cgi?id=1519167)
+* [ JavaScriptCore tracking issue ](https://bugs.webkit.org/show_bug.cgi?id=223166)
+<!-- * [ core-js tracking issue ](https://github.com/zloirock/core-js/issues/365) -->
+* [ Temporal v2 ](https://github.com/js-temporal/proposal-temporal-v2)
+</script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="igalia-align-left" -->
+
+# Special Thanks 🙏
+
+* Temporal Champions
+* Moment.js Maintainers
+<!-- * Temporal Stage 3 Reviewers -->
+<!-- * ECMA 262 Editors -->
+* Organizers and PC
+* Olga Kobets
+</script></section><section data-markdown><script type="text/template">
+# dank u! ❤🕒
+</script></section></section></div>
+
+      <div class="igalia-bg-1"></div>
+      <div class="igalia-bg-2"></div>
+      <div class="igalia-bg-3"></div>
+      <div class="igalia-footer">
+        <strong>How to outsmart time 🧠🕒</strong>
+        Ujjwal Sharma (@ryzokuken), JSNation 2021
+      </div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+
+    <script>
+      const onSlideChange = event => {
+        if (event.currentSlide.dataset.hasOwnProperty('cover')) {
+          document.querySelector('.reveal').classList.add('is-cover')
+        } else {
+          document.querySelector('.reveal').classList.remove('is-cover')
+        }
+        if (event.currentSlide.dataset.hasOwnProperty('middleCover')) {
+          document.querySelector('.reveal').classList.add('is-middle-cover')
+        } else {
+          document.querySelector('.reveal').classList.remove('is-middle-cover')
+        }
+        if (event.currentSlide.dataset.hasOwnProperty('sectionCover')) {
+          document.querySelector('.reveal').classList.add('is-section-cover')
+        } else {
+          document.querySelector('.reveal').classList.remove('is-section-cover')
+        }
+        if (event.currentSlide.dataset.hasOwnProperty('sectionCover-2')) {
+          document.querySelector('.reveal').classList.add('is-section-cover2')
+        } else {
+          document.querySelector('.reveal').classList.remove('is-section-cover2')
+        }
+        if (event.currentSlide.dataset.hasOwnProperty('backgroundColor')
+            || event.currentSlide.dataset.hasOwnProperty('backgroundImage')) {
+          document.querySelector('.reveal').classList.add('is-bg')
+        } else {
+          document.querySelector('.reveal').classList.remove('is-bg')
+        }
+      }
+
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"hash":true,"slideNumber":"c/t","height":800,"minScale":0.7,"chart":{"defaults":{"global":{"title":{"fontColor":"#000"},"legend":{"position":"bottom","labels":{"fontColor":"#000"}},"tooltips":{"labels":{"fontColor":"#000"}}},"scale":{"scaleLabel":{"fontColor":"#000"},"ticks":{"fontColor":"#000","beginAtZero":true}}},"pie":{"backgroundColor":[["#0067B1","#FF9900","#670164","#A1C22D"]],"fontSize":40},"bar":{"backgroundColor":["#0067B1","#FF9900","#670164","#A1C22D"]},"line":{"backgroundColor":["#0067B1","#FF9900","#670164","#A1C22D"]}}}, queryOptions);
+    </script>
+
+    <script src="././assets/node_modules/reveal.js-plugins/chart/Chart.min.js"></script>
+    <script src="././assets/node_modules/reveal.js-plugins/chart/plugin.js"></script>
+    <script src="././assets/assets/plugins.js"></script>
+
+    <script>
+      Reveal.initialize(options);
+      Reveal.on('slidechanged', onSlideChange);
+      Reveal.on('ready', onSlideChange);
+    </script>
+  </body>
+</html>
